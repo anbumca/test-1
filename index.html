@@ -35,17 +35,33 @@
 <body>
 
     <div id="app">
-        <div class="content" v-break-at-index="5">communicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunica anbussanbussanbussanbussanbussanbussanbuss
+        <div class="content" v-break-at-index="5">communicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunica anbussanbussanbussanbussanbussanbussanbuss anbussanbussanbussanbussanbussanbussanbuss anbussanbussanbussanbussanbussanbussanbuss anbu
         </div>
     </div>
 
     <script>
         Vue.directive('break-at-index', {
             bind(el, binding) {
-                const text = el.innerText;
+              console.log(window.innerWidth);
+if(window.innerWidth <= 360) {
+     const text = el.innerText;
                 const breakIndex = binding.value;
-                const newText = text.slice(0, breakIndex) + '&shy;' + text.slice(breakIndex);
-                el.innerHTML = newText;
+
+const words = text.trim().split(/\s+/);
+const nonEmptyWords = words.filter(word => word !== ''); 
+
+let texts = "";
+
+const processedWords = words.map((word) => {
+    const slicedWord = word.slice(0, breakIndex) + '&shy;' + word.slice(breakIndex);
+    console.log(slicedWord.replace(/.*?&shy;/, '').length);
+    const textcalculate = slicedWord.replace(/.*?&shy;/, '')
+    
+    texts += slicedWord + ' ';
+});
+                el.innerHTML = texts;
+}
+                
             }
         });
 
