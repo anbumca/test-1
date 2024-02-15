@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .content {
+            max-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            white-space: pre-wrap; /* Preserve white-space and wrap as necessary */
+            word-break: break-word; /* Break words when needed */
+        }
+
+        @media screen and (max-width: 600px) {
+            /* Styles for small screens */
+            .content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="content" v-break-at-index="5">communicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunicacommunica anbussanbussanbussanbussanbussanbussanbuss
+        </div>
+    </div>
+
+    <script>
+        Vue.directive('break-at-index', {
+            bind(el, binding) {
+                const text = el.innerText;
+                const breakIndex = binding.value;
+                const newText = text.slice(0, breakIndex) + '&shy;' + text.slice(breakIndex);
+                el.innerHTML = newText;
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>
