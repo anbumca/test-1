@@ -1,0 +1,45 @@
+## Query
+
+```graphql
+mutation userCreate($user: UserCreatedInput!) {
+  userCreate(user: $user) {
+    username
+    phone_number
+    email
+  }
+}
+```
+
+# User Create Mutation
+
+This GraphQL mutation allows you to create a new user with the specified details.
+
+## Variables
+
+```json
+{ 
+  "user": { 
+    "username": "usddddxxxAnwdwd",
+    "phone_number": "+918778956578",
+    "email": "anbuww@gmail.com"
+  }
+}
+```
+
+## Result
+```json
+{
+  "data": {
+    "userCreate": {
+      "first": "Anbu",
+      "last": "Sq",
+      "email": "anbu.mca232@gmail.com",
+      "password": "Anbu@1234567890",
+      "birthdate": "05-22-1990",
+      "mobileNumber": "",
+      "isLoyaltyEnroll": true,
+      "isEmailPreferences": true
+    }
+  }
+}
+```
